@@ -9,7 +9,7 @@
 
 #pragma once
 
-#define USE_OFXLIBDC
+//#define USE_OFXLIBDC
 
 #include "ofMain.h"
 #include "MSACore.h"
@@ -108,9 +108,10 @@ namespace msa {
 		bool isOfxGrabber();
         
         bool isReady();
-		unsigned char *getPixels();
-		float getWidth();
-		float getHeight();
+		unsigned char *getPixelsData() const;
+        ofPixelsRef getPixels() const;
+		float getWidth() const;
+		float getHeight() const;
         
 		void draw(float x, float y, float w, float h);
         

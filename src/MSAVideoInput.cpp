@@ -132,11 +132,11 @@ namespace msa {
                 
                 if(inputDevice.player->isLoaded() == false) {
                     //				setDataPathToBundle();
-                    if(inputDevice.player->loadMovie(inputVideoFilename) == false) {
+                    if(inputDevice.player->load(inputVideoFilename) == false) {
                         printf("Could not find inputVideo.mov\n");
                         string videoFilename = "inputVideo" + ofToString(width, 0) + "x" + ofToString(height, 0) + ".mov";
                         printf("trying %s\n", videoFilename.c_str());
-                        bool bLoaded = inputDevice.player->loadMovie(videoFilename);
+                        bool bLoaded = inputDevice.player->load(videoFilename);
                         if(bLoaded == false) useOFGrabber = true;
                         printf("%s\n", bLoaded ? "SUCCESS" : "FAIL");
                     }
@@ -231,8 +231,8 @@ namespace msa {
         }
         
         if(info.size.x == 0) {
-            info.size.x			= inputDevice.current->getPixelsRef().getWidth();
-            info.size.y			= inputDevice.current->getPixelsRef().getHeight();
+            info.size.x			= inputDevice.current->getPixels().getWidth();
+            info.size.y			= inputDevice.current->getPixels().getHeight();
             info.invSize.x		= 1.0f/info.size.x;
             info.invSize.y		= 1.0f/info.size.y;
             info.aspectRatio	= info.size.x/info.size.y;
@@ -309,7 +309,7 @@ namespace msa {
     
     //--------------------------------------------------------------
     void VideoInput::loadMovie(string s) {
-        if(inputDevice.player) inputDevice.player->loadMovie(s);
+        if(inputDevice.player) inputDevice.player->load(s);
     }
     
     //--------------------------------------------------------------
@@ -362,29 +362,36 @@ namespace msa {
     
     //--------------------------------------------------------------
     bool VideoInput::isReady() {
-        if(inputDevice.current == false) return false;
+        if(inputDevice.current == NULL) return false;
         switch(inputType) {
             case kVideoPlayer: return true;
             case kVideoGrabber: return inputDevice.ofGrabber->isInitialized();
 #ifdef USE_OFXLIBDC
             case kofxLibdc: return inputDevice.libdcGrabber->isReady();
 #endif
+            default:
+                break;
         }
     }
     
     
     //--------------------------------------------------------------
-    unsigned char *VideoInput::getPixels() {
+    unsigned char *VideoInput::getPixelsData() const {
+        return inputDevice.current->getPixels().getData();
+    }
+    
+    //--------------------------------------------------------------
+    ofPixelsRef VideoInput::getPixels() const {
         return inputDevice.current->getPixels();
     }
     
     //--------------------------------------------------------------
-    float VideoInput::getWidth() {
+    float VideoInput::getWidth() const {
         return info.size.x;
     }
     
     //--------------------------------------------------------------
-    float VideoInput::getHeight() {
+    float VideoInput::getHeight() const {
         return info.size.y;
     }
     
@@ -400,6 +407,9 @@ namespace msa {
 #ifdef USE_OFXLIBDC
                 case kofxLibdc: inputDevice.libdcGrabber->draw(x, y, w, h); break;
 #endif
+                default:
+                    break;
+
             }
             
             
@@ -408,13 +418,13 @@ namespace msa {
                 ofSetLineWidth(3);
                 glPushMatrix();
                 glTranslatef(x, y, 0);
-                ofLine(w/2, 0, w/2, h);
-                ofLine(0, h/2, w, h/2);
+                ofDrawLine(w/2, 0, w/2, h);
+                ofDrawLine(0, h/2, w, h/2);
                 ofSetLineWidth(1);
-                ofLine(w/4, 0, w/4, h);
-                ofLine(3 * w/4, 0, 3 * w/4, h);
-                ofLine(0, h/4, w, h/4);
-                ofLine(0, 3 * h/4, w, 3 * h/4);
+                ofDrawLine(w/4, 0, w/4, h);
+                ofDrawLine(3 * w/4, 0, 3 * w/4, h);
+                ofDrawLine(0, h/4, w, h/4);
+                ofDrawLine(0, 3 * h/4, w, 3 * h/4);
                 glPopMatrix();
             }
             ofPopStyle();
