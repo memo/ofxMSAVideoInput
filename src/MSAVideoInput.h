@@ -9,7 +9,7 @@
 
 #pragma once
 
-//#define USE_OFXLIBDC
+#define USE_OFXLIBDC
 
 #include "ofMain.h"
 #include "MSACore.h"
