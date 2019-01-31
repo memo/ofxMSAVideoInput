@@ -122,7 +122,7 @@ namespace msa {
         
 	protected:
 		void			setupUI();
-		void			keyPressed(ofKeyEventArgs &e);
+//        void            keyPressed(ofKeyEventArgs &e);
 		string			inputVideoFilename;
 	};
     

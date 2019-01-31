@@ -168,7 +168,7 @@ namespace msa {
         ofLog(OF_LOG_VERBOSE, "VideoInput::setup");
         setupUI();
         initInput();
-        ofAddListener(ofEvents().keyPressed, this, &VideoInput::keyPressed);
+//        ofAddListener(ofEvents().keyPressed, this, &VideoInput::keyPressed);
     }
     
     //--------------------------------------------------------------
@@ -320,28 +320,27 @@ namespace msa {
     
     
     //--------------------------------------------------------------
-    void VideoInput::keyPressed(ofKeyEventArgs &e) {
-        switch(e.key) {
-            case 's':
-                showSettings = true;
-                break;
-                
-            case 'i':
-                doDraw ^= true;
-                break;
-                
-        }
-        
-        if(inputType == kVideoPlayer) {
-            switch(e.key) {
-                case 'w': videoControls.reset = true; break;
-                case 'v': videoControls.togglePlay = true; break;
-                case '.': videoControls.forward = true; break;
-                case ',': videoControls.rewind = true; break;
-            }
-        }
-        
-    }
+//    void VideoInput::keyPressed(ofKeyEventArgs &e) {
+//        switch(e.key) {
+//            case 's':
+//                showSettings = true;
+//                break;
+//
+//            case 'i':
+//                doDraw ^= true;
+//                break;
+//
+//        }
+//
+//        if(inputType == kVideoPlayer) {
+//            switch(e.key) {
+//                case 'w': videoControls.reset = true; break;
+//                case 'v': videoControls.togglePlay = true; break;
+//                case '.': videoControls.forward = true; break;
+//                case ',': videoControls.rewind = true; break;
+//            }
+//        }
+//    }
     
     
     //--------------------------------------------------------------
