@@ -369,6 +369,7 @@ namespace msa {
             case kofxLibdc: return inputDevice.libdcGrabber->isReady();
 #endif
             default:
+                return false;
                 break;
         }
     }
