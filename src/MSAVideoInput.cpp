@@ -399,7 +399,7 @@ namespace msa {
     void VideoInput::draw(float x, float y, float w, float h) {
         if(doDraw && isReady()) {
             ofPushStyle();
-            glColor3f(1, 1, 1);
+            ofSetColor(255);
             //            inputDevice.current->draw(x, y, w, h);// FIX
             switch(inputType) {
                 case kVideoPlayer:  inputDevice.player->draw(x, y, w, h); break;
@@ -414,10 +414,10 @@ namespace msa {
             
             
             if(doDrawGrid) {
-                glColor3f(1, 0, 0);
+                ofSetColor(255, 0, 0);
                 ofSetLineWidth(3);
-                glPushMatrix();
-                glTranslatef(x, y, 0);
+                ofPushMatrix();
+                ofTranslate(x, y, 0);
                 ofDrawLine(w/2, 0, w/2, h);
                 ofDrawLine(0, h/2, w, h/2);
                 ofSetLineWidth(1);
@@ -425,7 +425,7 @@ namespace msa {
                 ofDrawLine(3 * w/4, 0, 3 * w/4, h);
                 ofDrawLine(0, h/4, w, h/4);
                 ofDrawLine(0, 3 * h/4, w, 3 * h/4);
-                glPopMatrix();
+                ofPopMatrix();
             }
             ofPopStyle();
         }
