@@ -33,7 +33,7 @@ namespace msa {
         } inputType;
 
 		struct {
-			ofBaseVideo			*current;				// points to one of below
+            ofBaseVideoDraws	*current;				// points to one of below
 
 			ofVideoPlayer       *player;
 			ofVideoGrabber		*ofGrabber;
