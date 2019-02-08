@@ -36,7 +36,7 @@ namespace msa {
 	void VideoInput::setupUI() {
 		gui.saveToXML();
         
-		gui.addPage("VIDEO INPUT").setXMLName("settings/VideoInput/VideoInput.xml");
+        gui.addPage("VIDEO INPUT").setXMLName("settings/videoinput.xml");
 		gui.addToggle("enabled", enabled);
 		gui.addToggle("doDraw", doDraw);
 		gui.addToggle("doDrawGrid", doDrawGrid);
