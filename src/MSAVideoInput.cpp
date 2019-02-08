@@ -41,7 +41,7 @@ namespace msa {
 		gui.addToggle("doDraw", doDraw);
 		gui.addToggle("doDrawGrid", doDrawGrid);
 		
-		int maxWidth = 1280;
+        int maxWidth = 1920;
 		int maxHeight = maxWidth * 3.0f / 4;
         
         string typeNames[] = {  "VideoGrabber", "VideoPlayer", "ofxLibDc"};
@@ -54,8 +54,8 @@ namespace msa {
         
 		gui.addTitle("DIMENSIONS");
 		gui.addToggle("captureColor", captureColor);
-		gui.addSlider("width", width, 320, maxWidth);
-		gui.addSlider("height", height, 180, maxHeight);
+        gui.addSlider("width", width, 320, maxWidth);
+        gui.addSlider("height", height, 180, maxHeight);
 		gui.addButton("restart", restart);
         
 		gui.addTitle("INFO");
