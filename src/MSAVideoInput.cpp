@@ -55,7 +55,7 @@ namespace msa {
 		gui.addTitle("DIMENSIONS");
 		gui.addToggle("captureColor", captureColor);
 		gui.addSlider("width", width, 320, maxWidth);
-		gui.addSlider("height", height, 240, maxHeight);
+		gui.addSlider("height", height, 180, maxHeight);
 		gui.addButton("restart", restart);
         
 		gui.addTitle("INFO");
